@@ -1,24 +1,51 @@
 <%- include('../includes/head.ejs') %>
-    </head>
+</head>
 
-    <body>
-        <%- include('../includes/navigation.ejs') %>
-        <main>
-            <% if (orders.length <= 0) { %>
-                <h1>Nothing there!</h1>
-            <% } else { %>
-                <ul>
+<body class="bg-light">
+    <%- include('../includes/navigation.ejs') %>
+    <main class="container overflow-scroll">
+        <% if (orders.length <= 0) { %>
+        <h1>Nothing there!</h1>
+        <% } else { %>
+        <ul>
+            <div class="row">
+                <div class="col-sm-8">
                     <% orders.forEach(order => { %>
-                        <li>
-                            <h1># <%= order.id %></h1>
-                            <ul>
-                                <% order.products.forEach(product => { %>
-                                    <li><%= product.title %> (<%= product.orderItem.quantity %>)</li>
-                                <% }); %>
-                            </ul>
-                        </li>
+                    <li>
+                        <div class="card-header rounded">Order Id : <%= order.id %></div>
+                        <br>
+                        <ul>
+                            <% order.products.forEach(p => { %>
+                            <div class="card shadow-sm rounded">
+                                <div class="row">
+                                    <div class="col-sm-4 p-4">
+                                        <img class=" ml-2 img-fluid  custom-size shadow rounded" src="<%= p.imageUrl %>"
+                                            alt="<%= p.title %>" />
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="card-body ">
+                                            <div class="d-flex justify-content-between h4">
+                                                <div class="card-text "><%= p.title %></div>
+                                                <div class="card-text "><i class="fa fa-shopping-basket"></i>
+                                                    <%= p.orderItem.quantity %></div>
+                                            </div>
+                                            <hr>
+                                            <p class="card-text card-link-secondary font-weight-normal h5">Genre:
+                                                <%= p.description %></p>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                            </div>
+                            <br>
+                            <% }); %>
+                        </ul>
+                    </li>
                     <% }); %>
-                </ul>
-            <% } %>
-        </main>
-        <%- include('../includes/end.ejs') %>
+                </div>
+            </div>
+        </ul>
+        <% } %>
+    </main>
+    <%- include('../includes/end.ejs') %>

@@ -11,12 +11,13 @@
             method="POST" enctype="multipart/form-data">
             <div class="container">
                 <div class="card mx-auto w-50 shadow rounded text-left">
+                  
                     <div class="card-header h4 font-weight-normal font-italic text-center  text-info">
                         <% if(editing) { %> Edit Product <% } else { %> Add Product <% } %>
                     </div>
                     <div class="card-body mt-2">
                         <div class="form-group">
-                            <label for="title">Title</label>
+                            <label for="title">Game Title</label>
                             <input type="text" class="form-control shadow-sm" name="title" id="title"
                                 value="<% if (editing) { %><%= product.title %><% } %>">
                         </div>
@@ -25,7 +26,7 @@
                                 <input type="text" name="imageUrl" id="imageUrl" value="<% if (editing) { %><%= product.imageUrl %><% } %>">
                             </div> -->
                         <div class="form-group">
-                            <label for="image">Image URL</label>
+                            <label for="image">Image URL   <i class="fa fa-xbox"></i></label>
                             <input type="file" class="form-control-file" name="image" id="image">
                         </div>
                         <div class="form-group">
@@ -34,9 +35,9 @@
                                 value="<% if (editing) { %><%= product.price %><% } %>">
                         </div>
                         <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="description" class="form-control" id="description"
-                                rows="5"><% if (editing) { %><%= product.description %><% } %></textarea>
+                            <label for="genre">Genre</label>
+                            <input type="text" name="genre" class="form-control" id="genre"
+                                value="<% if (editing) { %><%= product.description %><% } %>"/>
                         </div>
                         <% if (editing) { %>
                         <input type="hidden" value="<%= product.id %>" name="productId">

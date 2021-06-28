@@ -1,18 +1,31 @@
 <%- include('../includes/head.ejs') %>
-    </head>
+</head>
 
-    <body>
-        <%- include('../includes/navigation.ejs') %>
-        <main class="centered">
-            <h1><%= product.title %></h1>
-            <hr>
-            <div class="image">
-                <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main class="container">
+        <div class="row">
+            <div class="col-sm-6 mx-auto">
+                <div class="card shadow rounded">
+                    <img class="card-img-top img-thumbnail custom-size shadow-sm rounded" src="<%= product.imageUrl %>"
+                        alt="<%= product.title %>" />
+                    <div class="card-body">
+                        <p class="h3 font-weight-normal text-center" style="color:slateblue;"><%= product.title %></p>
+                        <hr class="bg-secondary">
+                        <div class="p-2">
+                            <p class="card-text h5 font-weight-normal ">Price: <span
+                                    class="text-success"><%= currencyFormatter.format(product.price) %></span>
+                            </p>
+                            <p class="card-text mt-3 font-weight-normal h5 ">Genre: <%= product.description %></p>
+                            <br />
+                            <a href="/products/<%= product.id %>" class="btn btn-outline-primary">Details</a>
+                            <% if(isAuthenticated) { %>
+                            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h2><%= product.price %></h2>
-            <p><%= product.description %></p>
-            <% if(isAuthenticated) { %> 
-                <%- include('../includes/add-to-cart.ejs', {product: product}) %>
-            <% } %> 
-        </main>
-        <%- include('../includes/end.ejs') %>
+        </div>
+    </main>
+    <%- include('../includes/end.ejs') %>

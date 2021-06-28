@@ -3,11 +3,10 @@
 
 <head>
     <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
 </head>
 
-<body>
+<body style="background-image: linear-gradient(to right, #2193b0, #6dd5ed);">
     <%- include('../includes/navigation.ejs') %>
     <br />
     <form method="POST" action="/auth/loginUser">
@@ -17,8 +16,8 @@
                   <span class="text-center">  <%= error %></span>
                 </div>
             <% } %> 
-            <div class="card mx-auto w-50 shadow rounded text-left">
-                <div class="card-header h4 font-weight-normal font-italic text-center  text-info">
+            <div class="card mx-auto w-50 shadow rounded text-left animate__animated animate__fadeIn">
+                <div class="card-header h4 font-weight-normal font-italic text-center  text-success">
                     Login
                 </div>
                 <div class="card-body mt-2">

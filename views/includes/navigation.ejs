@@ -1,11 +1,10 @@
 <nav class="navbar p-2 mb-4 shadow navbar-custom navbar-expand-sm">
 
     <div class="navbar-brand">
-        <!-- <a href="#">
-            {" "}
-            <img class="ml-3 rounded-circle" src={loanimg} width="45" height="45" alt="logo" />
-        </a> -->
-        <!-- <span class="ml-2 h4"> Gamer's sandbox</span> -->
+        <a href="/">
+            <img class="ml-3 rounded-circle" src="/images/joystick.png" width="40" height="40" alt="logo" />
+        </a>
+        <span class="ml-2 h5"> Gamer's Cove</span>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,13 +12,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbar-list">
-        <ul class="navbar-nav  mt-2 ">
+        <ul class="navbar-nav ">
             <li class="nav-item ">
-                <a class="nav-link <%= path === '/' ? 'active' : '' %>" href="/"> <i class="fa  fa-home"></i> Home</a>
+                <a class="nav-link <%= path === '/' ? 'active' : '' %>" href="/"> <i class="fa fa-home"></i> Store</a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link <%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
-            </li> -->
             <% if(isAuthenticated) { %>
             <li class="nav-item">
                 <a class="nav-link <%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">

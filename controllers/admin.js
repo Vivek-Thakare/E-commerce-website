@@ -12,7 +12,7 @@ exports.postAddProduct = async (req, res, next) => {
   const title = req.body.title;
   const image = req.file; //for images, refer multer in app.js for more details
   const price = req.body.price;
-  const description = req.body.description;
+  const genre = req.body.genre;
 
   const imageUrl = `/${image.path}`; // it stores path of image in the database, images must always be stored on file system.
 
@@ -21,7 +21,7 @@ exports.postAddProduct = async (req, res, next) => {
       title: title,
       price: price,
       imageUrl: imageUrl,
-      description: description,
+      description: genre,
     });
     console.log("Created Product");
     res.redirect("/admin/products");
@@ -59,14 +59,14 @@ exports.postEditProduct = async (req, res, next) => {
   const updatedTitle = req.body.title;
   const updatedPrice = req.body.price;
   const image = req.file;
-  const updatedDesc = req.body.description;
+  const updatedGenre = req.body.genre;
 
   try {
     const product = await Product.findByPk(prodId);
 
     product.title = updatedTitle;
     product.price = updatedPrice;
-    product.description = updatedDesc;
+    product.description = updatedGenre;
     if (image) {
       product.imageUrl = `/${image.path}`;
     }

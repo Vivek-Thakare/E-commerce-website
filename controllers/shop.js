@@ -24,6 +24,11 @@ exports.getProduct = async (req, res, next) => {
       product: product,
       pageTitle: product.title,
       path: "/products",
+      currencyFormatter: new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        minimumFractionDigits: 2,
+      }),
     });
   } catch (err) {
     console.log(err);
