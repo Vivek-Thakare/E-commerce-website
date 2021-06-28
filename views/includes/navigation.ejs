@@ -1,0 +1,75 @@
+<nav class="navbar p-2 mb-4 shadow navbar-custom navbar-expand-sm">
+
+    <div class="navbar-brand">
+        <!-- <a href="#">
+            {" "}
+            <img class="ml-3 rounded-circle" src={loanimg} width="45" height="45" alt="logo" />
+        </a> -->
+        <!-- <span class="ml-2 h4"> Gamer's sandbox</span> -->
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon text-dark"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar-list">
+        <ul class="navbar-nav  mt-2 ">
+            <li class="nav-item ">
+                <a class="nav-link <%= path === '/' ? 'active' : '' %>" href="/"> <i class="fa  fa-home"></i> Home</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link <%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
+            </li> -->
+            <% if(isAuthenticated) { %>
+            <li class="nav-item">
+                <a class="nav-link <%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">
+                    <i class="fa fa-plus"></i> Add Product
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin
+                    Products
+                </a>
+
+            </li>
+            <% } %>
+        </ul>
+        <div class="ml-5">
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="text" placeholder="Find a product">
+            <button class="btn btn-outline-light" type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+        <ul class="navbar-nav ml-auto">
+            <% if(isAuthenticated) { %>
+            <li class="nav-item mr-2">
+                <a class=" mt-2 nav-link <%= path === '/orders' ? 'active' : '' %>" href="/orders">My Orders</a>
+            </li>
+            <li class="nav-item mr-1">
+                <a class="nav-link <%= path === '/cart' ? 'active' : '' %>" href="/cart">
+                    <i class="fa fa-2x fa-shopping-cart"></i></a>
+            </li>
+            <% } %>
+            <% if(!isAuthenticated) { %>
+            <li class="nav-item">
+                <a class="nav-link <%= path === '/auth/login' ? 'active' : '' %>" href="/auth/login">
+                    <i class="fa fa-sign-in"></i> Login
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= path === '/auth/register' ? 'active' : '' %>" href="/auth/registerForm">
+                    <i class="fa fa-user-plus"></i> Sign up
+                </a>
+            </li>
+            <% } else { %>
+            <li class="nav-link mr-2">
+                <form method="POST" action="/auth/logout">
+                    <button class="btn" type=submit>
+                        <i class="fa fa-2x fa-sign-out text-light"></i>
+                    </button>
+                </form>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,38 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+
+            <main class="container">
+        <% if (prods.length > 0) { %>
+        <div class="row">
+            <% for (let product of prods) { %>
+            <div class="col-sm-4">
+                <div class="card shadow rounded p-1">
+                    <img class="img-fluid rounded" src="<%= product.imageUrl %>" alt="<%= product.title %>" />
+                    <div class="card-body">
+                        <div class="text-center">
+                            <p class="h3 text-primary"><%= product.title %></p>
+                            <hr class="bg-primary">
+                            <p class="card-text h4" style="color:goldenrod;"><sup
+                                    style="font-size:15px;">&#8377;</sup><%= product.price %></p>
+                            <p class="card-text"><%= product.description %></p>
+                            <br />
+                            <a href="/products/<%= product.id %>"
+                                class="btn btn-outline-primary float-left ">Details</a>
+                            <% if(isAuthenticated) { %>
+                            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+        <% } else { %>
+        <h1>No Products Found!</h1>
+        <% } %>
+    </main>
+            <%- include('../includes/end.ejs') %>

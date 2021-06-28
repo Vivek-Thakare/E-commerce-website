@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext');
+
+.navbar-dark {
+    color: white;
+}
+
+#navbar-list .active {
+    color:orange;
+}
+
+#navbar-list ul li {
+    color: white;
+    padding: 0px 11px 0px 11px;
+}
+
+#navbar-list ul li a{
+    color: white;
+  
+}
+
+#navbar-list ul li :hover{
+    color: orange;
+}
+
+.navbar-custom {
+    background-color: #484848;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+}
+
+
+

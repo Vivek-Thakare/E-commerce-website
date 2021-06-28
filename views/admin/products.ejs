@@ -1,0 +1,45 @@
+<%- include('../includes/head.ejs') %>
+<style>
+    .custom-size {
+        width: 22rem; 
+        height: 15rem
+    }
+</style>
+</head>
+
+<body class="bg-light">
+    <%- include('../includes/navigation.ejs') %>
+
+    <main class="container">
+        <% if (prods.length > 0) { %>
+        <div class="row">
+            <% for (let product of prods) { %>
+            <div class="col-sm-4">
+                <div class="card shadow rounded ">
+                    <img class="card-img-top img-thumbnail custom-size shadow-sm rounded" src="<%= product.imageUrl %>"
+                        alt="<%= product.title %>" />
+                    <div class="card-body">
+                        <p class="h3 font-weight-normal text-center" style="color:slateblue;"><%= product.title %></p>
+                        <hr class="bg-primary">
+                        <div class="p-2">
+                            <p class="card-text h5 font-weight-normal ">Price: <span class="text-success">&#8377; <%= product.price %></span>
+                            </p>
+                            <p class="card-text mt-3 font-weight-normal h5 ">Genre: <%= product.description %></p>
+                            <br />
+                            <a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn btn-outline-success">Edit</a>
+                            <form class="float-right" action="/admin/delete-product" method="POST">
+                                <input type="hidden" value="<%= product.id %>" name="productId">
+                                <button class="btn btn-outline-danger " type="submit">Delete</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+        <% } else { %>
+        <h1>No Products Found!</h1>
+        <% } %>
+    </main>
+    <%- include('../includes/end.ejs') %>
